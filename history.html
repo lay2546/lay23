@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ประวัติการสั่งซื้อ</title>
+  <link rel="stylesheet" href="history.css">
+  <script type="module">
+    import { db } from './firebase.js';
+    import { collection, query, where, getDocs, orderBy } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    if (!isLoggedIn) {
+      window.location.href = "Home.html";
+    } else {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const orderList = document.getElementById("order-list");
+
+      async function loadOrders() {
+        const q = query(
+          collection(db, "orders"),
+          where("uid", "==", user.uid),
+          orderBy("createdAt", "desc")
+        );
+
+        const querySnapshot = await getDocs(q);
+        if (querySnapshot.empty) {
+          orderList.innerHTML = '<li>ไม่มีประวัติคำสั่งซื้อ</li>';
+        } else {
+          querySnapshot.forEach(doc => {
+            const order = doc.data();
+            const date = order.createdAt?.toDate().toLocaleString("th-TH") || "-";
+            const items = order.cart.map(item => `${item.name} x ${item.quantity || 1}`).join(", ");
+            const li = document.createElement("li");
+            li.innerHTML = `🧁 <strong>${date}</strong>: ${items}`;
+            orderList.appendChild(li);
+          });
+        }
+      }
+
+      loadOrders();
+    }
+  </script>
+</head>
+<body>
+  <h1>🧾 ประวัติการสั่งซื้อของคุณ</h1>
+  <ul id="order-list">
+    <li>กำลังโหลดข้อมูล...</li>
+  </ul>
+</body>
+</html>

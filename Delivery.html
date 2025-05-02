@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Sidebar with Dropdown</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="Delivery.css" />
+</head>
+<body class="bg-gray-100">
+
+  <!-- 🌟 แถบด้านบน -->
+  <header id="top-bar" class="top-bar">
+    <h1 class="top-bar-title logo-text">Le Poney</h1>
+    <div class="top-bar-buttons">
+      <button id="menu-btn" class="menu-button">☰</button>
+    </div>
+  </header>
+
+  <!-- 🌟 Overlay -->
+  <div id="overlay" class="overlay hidden"></div>
+
+  <!-- 🌟 Sidebar -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <button id="close-btn" class="close-button">&times;</button>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a href="Home.html" class="nav-link">🏡 Home</a>
+        <div class="dropdown">
+          <button class="dropdown-btn">
+            🛍️ Product <span class="arrow">&#9662;</span>
+          </button>
+          <div class="dropdown-content">
+            <a href="Product.html" class="dropdown-link"> 🍰 Bakery & Dessert </a>
+            <a href="Product2.html" class="dropdown-link">🥤 SMOOTHIE & OTHERS</a>
+          </div>
+        </div>
+        <a href="Cart.html" id="cart-menu" class="nav-link">🛒 Cart <span id="cart-count">(0)</span></a>
+        <a href="Delivery.html" class="nav-link">🚚 Delivery</a>
+        <a href="Event.html" class="nav-link">📅 Event</a>
+        <a href="#" id="loginBtn" class="nav-link">🔑 Login</a>
+        <a href="#" id="logoutBtn" class="nav-link hidden">🚪 Logout</a>
+  
+    </nav>
+  </aside>
+
+  <!-- 🔐 Modal Login -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content relative">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div id="loginContent">กำลังโหลด...</div>
+    </div>
+  </div>
+
+  <!-- 🌟 เนื้อหาหลัก -->
+  <div class="container" style="margin-top: 100px;">
+    <h1 class="title">📦 วิธีการจัดส่ง</h1>
+    <p class="description">
+      คิดตามราคาค่าจัดส่งจริงตามที่บริษัทจัดส่งคิด เช่น <strong>GRAB</strong>
+    </p>
+
+    <div class="address-section">
+      <h2>📍 จุดรับสินค้า / จุดเริ่มต้นจัดส่ง</h2>
+      <ul>
+        <li>⭐ บ้านเลขที่ 19 ซอยพิพัฒน์ 2 ถนนสีลม เขตบางรัก กรุงเทพฯ 10500</li>
+        <li>⭐ บ้านเลขที่ 14/1 ซอยกาญจนาภิเษก 007 ถนนกาญจนาภิเษก เขตบางแคเหนือ กรุงเทพฯ 10160</li>
+      </ul>
+    </div>
+
+    <h1 class="title">🛒 วิธีการสั่งซื้อ</h1>
+    <div class="order-section">
+      <h2>🍞 Bakeries</h2>
+      <p>PRE-ORDER อย่างน้อย <strong>3 วัน</strong></p>
+      <h2>🥤 Smoothies</h2>
+      <p>PRE-ORDER อย่างน้อย <strong>1 วัน</strong></p>
+    </div>
+
+    <h1 class="title">📋 กรอกข้อมูลสำหรับจัดส่ง</h1>
+    <form class="delivery-form">
+      <label for="name">👤 ชื่อ-นามสกุล:</label>
+      <input type="text" id="name" name="name" placeholder="กรอกชื่อของคุณ" required />
+
+      <label for="phone">📱 เบอร์โทรศัพท์:</label>
+      <input type="tel" id="phone" name="phone" placeholder="กรอกเบอร์โทรศัพท์" required />
+
+      <label for="address">📦 ที่อยู่จัดส่ง:</label>
+      <textarea id="address" name="address" placeholder="กรอกที่อยู่จัดส่ง" required></textarea>
+
+      <label for="delivery-option">🚚 วิธีการจัดส่ง:</label>
+      <select id="delivery-option" name="delivery-option" required>
+        <option value="grab">GRAB</option>
+        <option value="lineman">LINE MAN</option>
+        <option value="other">ขนส่งอื่นๆ</option>
+      </select>
+
+      <button type="submit" class="submit-btn">✅ ยืนยันการสั่งซื้อ</button>
+    </form>
+  </div>
+
+  <!-- 🔧 Script -->
+  <script src="Delivery.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

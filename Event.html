@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Sidebar with Dropdown</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="Event.css" />
+</head>
+<body class="bg-gray-100">
+
+  <!-- 🌟 แถบด้านบน -->
+  <header id="top-bar" class="top-bar">
+    <h1 class="top-bar-title logo-text">Le Poney</h1>
+    <div class="top-bar-buttons">
+      <button id="menu-btn" class="menu-button">☰</button>
+    </div>
+  </header>
+
+  <div id="overlay" class="overlay hidden"></div>
+
+  <!-- 🌟 Sidebar -->
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <button id="close-btn" class="close-button">&times;</button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="Home.html" class="nav-link">🏡 Home</a>
+      <div class="dropdown">
+        <button class="dropdown-btn">
+          🛍️ Product <span class="arrow">&#9662;</span>
+        </button>
+        <div class="dropdown-content">
+          <a href="Product.html" class="dropdown-link"> 🍰 Bakery & Dessert </a>
+          <a href="Product2.html" class="dropdown-link">🥤 SMOOTHIE & OTHERS</a>
+        </div>
+      </div>
+      <a href="Cart.html" id="cart-menu" class="nav-link">🛒 Cart <span id="cart-count">(0)</span></a>
+      <a href="Delivery.html" class="nav-link">🚚 Delivery</a>
+      <a href="Event.html" class="nav-link">📅 Event</a>
+      <a href="#" class="nav-link" id="loginBtn">🔑Login</a>
+    </nav>
+  </aside>
+
+  <!-- 🌟 ส่วนกิจกรรม -->
+  <main class="event-container">
+    <h2 class="text-2xl font-bold text-center">📅 กิจกรรมพิเศษ</h2>
+    <div class="event-list">
+      <div class="event-card">
+        <h3 class="event-title">บูธเบเกอรี่ที่ตลาดนัดคณะวิทยาศาสตร์</h3>
+        <p class="event-date">จัดขึ้นเดือนละ 2 ครั้ง</p>
+        <p class="event-description">
+          พบกับเบเกอรี่และเครื่องดื่มคุณภาพเยี่ยมในราคาที่เข้าถึงได้ ณ ตลาดนัดคณะวิทยาศาสตร์ มหาวิทยาลัยมหิดล...
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- 🔐 Modal Login -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content relative">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div id="loginContent">กำลังโหลด...</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

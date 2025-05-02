@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar with Dropdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="Product_cleaned.css">  
+</head>
+<body class="bg-gray-100">
+
+    <!-- 🌟 แถบด้านบน (Top Bar) -->
+    <header id="top-bar" class="top-bar">
+        <h1 class="top-bar-title logo-text">Le Poney</h1>
+        <div class="top-bar-buttons">
+            <button id="menu-btn" class="menu-button">☰</button>
+        </div>
+    </header>
+
+    <!-- 🌟 Overlay -->
+    <div id="overlay" class="overlay hidden"></div>
+
+    <!-- 🌟 Sidebar (Responsive) -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <button id="close-btn" class="close-button">&times;</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="Home.html" class="nav-link">🏡 Home</a>
+            <div class="dropdown">
+                <button class="dropdown-btn">
+                    🛍️ Product <span class="arrow">&#9662;</span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="Product.html" class="dropdown-link"> 🍰 Bakery & Dessert  </a>
+                    <a href="Product2.html" class="dropdown-link">🥤 SMOOTHIE & OTHERS</a>
+                </div>
+            </div>
+        
+            <!-- 🌟 เมนู Cart ใน Sidebar -->
+            <a href="Cart.html" id="cart-menu" class="nav-link">🛒 Cart <span id="cart-count">(0)</span></a>
+
+
+<!-- 🌟 ตะกร้าสินค้า -->
+
+            <a href="Delivery.html" class="nav-link">🚚 Delivery</a>
+            <a href="Event.html" class="nav-link">📅 Event</a>
+            <a href="#" id="loginBtn" class="nav-link">🔑 Login</a>
+            <a href="#" id="logoutBtn" class="nav-link hidden">🚪 Logout</a>
+
+        </nav>
+    </aside>
+    
+    </div>
+
+<!-- 🌟 กิจกรรมแนะนำ -->
+<main class="container">
+    <section class="activities">
+        <section class="product-section">
+            <h2 class="text-2xl font-bold mb-4 text-center">🛍️ เมนูสินค้า</h2>
+        
+            <div class="product-grid">
+                <!-- 🍪 COOKIE -->
+                <div class="product-card">
+                    <img src="รูป/cookie.jpg" class="product-img" alt="Cookie">
+                    <div class="product-body">
+                        <h5 class="product-title">คุกกี้ธัญพืชแบบกรอบ รสลูกเกดหรือแครนเบอร์รี่</h5>
+                        <p class="product-price">฿50 / 4 ชิ้น</p>
+                        <button class="add-to-cart" data-name="คุกกี้ธัญพืช" data-price="50">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="รูป/choco_cookie.jpg" class="product-img" alt="Chocolate Cookie">
+                    <div class="product-body">
+                        <h5 class="product-title">Soft Chocolate Chip Cookie</h5>
+                        <p class="product-price">฿50 / ชิ้น</p>
+                        <button class="add-to-cart" data-name="Soft Chocolate Chip Cookie" data-price="50">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="รูป/custard.jpg" class="product-img" alt="Caramel Custard">
+                    <div class="product-body">
+                        <h5 class="product-title">Caramel Custard</h5>
+                        <p class="product-price">฿40 / ชิ้น</p>
+                        <button class="add-to-cart" data-name="Caramel Custard" data-price="40">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                
+                <!-- 🧀 CHEESE CAKE -->
+                <div class="product-card">
+                    <img src="รูป/plain_cheesecake.jpg" class="product-img" alt="Plain Cheesecake">
+                    <div class="product-body">
+                        <h5 class="product-title">Plain Cheesecake</h5>
+                        <p class="product-price">฿130 / ชิ้น</p>
+                        <button class="add-to-cart" data-name="Plain Cheesecake" data-price="130">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="รูป/pineapple_cheesecake.jpg" class="product-img" alt="Pineapple Cheesecake">
+                    <div class="product-body">
+                        <h5 class="product-title">Pineapple Cheesecake</h5>
+                        <p class="product-price">฿140 / ชิ้น</p>
+                        <button class="add-to-cart" data-name="Pineapple Cheesecake" data-price="140">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                
+                <!-- 🥪 PANINI SANDWICH -->
+                <div class="product-card">
+                    <img src="รูป/ham_cheese.jpg" class="product-img" alt="Ham Cheese Sandwich">
+                    <div class="product-body">
+                        <h5 class="product-title">Ham Cheese</h5>
+                        <p class="product-price">฿50 / ชิ้น</p>
+                        <button class="add-to-cart" data-name="Ham Cheese" data-price="50">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="รูป/tuna.jpg" class="product-img" alt="Tasty Tuna">
+                    <div class="product-body">
+                        <h5 class="product-title">Tasty Tuna</h5>
+                        <p class="product-price">฿55 / ชิ้น</p>
+                        <button class="add-to-cart" data-name="Tasty Tuna" data-price="55">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                
+                <!-- 🧁 MUFFIN -->
+                <div class="product-card">
+                    <img src="รูป/muffin.jpg" class="product-img" alt="Muffin">
+                    <div class="product-body">
+                        <h5 class="product-title">Muffin (Coffee, Chocolate Chip, Apple & Raisin)</h5>
+                        <p class="product-price">฿45 / ชิ้น</p>
+                        <button class="add-to-cart" data-name="Muffin" data-price="45">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+                
+                <!-- 🍋 NEW MENU - Lemon Custard Sponge Pie -->
+                <div class="product-card">
+                    <img src="รูป/lemon_pie.jpg" class="product-img" alt="Lemon Custard Sponge Pie">
+                    <div class="product-body">
+                        <h5 class="product-title">Lemon Custard Sponge Pie</h5>
+                        <p class="product-price">฿50 / ชิ้น</p>
+                        <button class="add-to-cart" data-name="Lemon Custard Sponge Pie" data-price="50">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            </div>
+            <div id="product-container" class="product-grid"></div>
+        </section>
+        
+    </section>
+</main>
+<!-- 🔐 Modal Login -->
+<div id="loginModal" class="modal hidden">
+    <div class="modal-content relative">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div id="loginContent">กำลังโหลด...</div>
+    </div>
+  </div>  
+  </div>
+  <script type="module">
+    import { loadProducts } from './product-loader.js';
+    loadProducts("smoothie", "product-container"); // หรือ "bakery" สำหรับ Product2.html
+  </script>
+  <script src="script.js"></script>
+  
+</body>
+</html>

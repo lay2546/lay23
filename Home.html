@@ -1,0 +1,116 @@
+    <!DOCTYPE html>
+    <html lang="th">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Sidebar with Dropdown</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="หน้าแรก.css">  
+    </head>
+    <body class="bg-gray-100">
+
+        <!-- 🌟 แถบด้านบน (Top Bar) -->
+        <header id="top-bar" class="top-bar">
+            <h1 class="top-bar-title logo-text">Le Poney</h1>
+            <div class="top-bar-buttons">
+                <button id="menu-btn" class="menu-button">☰</button>
+            </div>
+        </header>
+
+        <!-- 🌟 Overlay -->
+        <div id="overlay" class="overlay hidden"></div>
+
+        <!-- 🌟 Sidebar (Responsive) -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <button id="close-btn" class="close-button">&times;</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="Home.html" class="nav-link">🏡 Home</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">
+                        🛍️ Product <span class="arrow">&#9662;</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="Product.html" class="dropdown-link"> 🍰 Bakery & Dessert  </a>
+                        <a href="Product2.html" class="dropdown-link">🥤 SMOOTHIE & OTHERS</a>
+                    </div>
+                </div>
+                <a href="Cart.html" id="cart-menu" class="nav-link">🛒 Cart <span id="cart-count">(0)</span></a>
+                <a href="Delivery.html" class="nav-link">🚚 Delivery</a>
+                <a href="Event.html" class="nav-link">📅 Event</a>
+                <a href="#" id="loginBtn" class="nav-link">🔑 Login</a>
+                <a href="#" id="logoutBtn" class="nav-link hidden">🚪 Logout</a>
+
+    </div>
+
+    </div>      
+            </nav>
+        </aside>
+        </div>
+        <!-- 🌟 เนื้อหาหลักของหน้า -->
+        <main class="home-container">
+            <section class="philosophy-section">
+                <h2>✨ ปรัชญาของร้าน</h2>
+                <p>Le Poney เชื่อว่าการทำขนมและเครื่องดื่มไม่ใช่แค่เรื่องของรสชาติ แต่เป็นศิลปะแห่งความสุขที่มอบให้กับลูกค้าทุกคน...</p>
+            </section>
+
+            <!-- 🎉 โปรโมชั่นพิเศษ -->
+            <section class="promotion-section">
+                <h2>🎉 โปรโมชั่นพิเศษ</h2>
+                <div class="promo-grid">
+                    <div class="promo-card">
+                        <img src="lemon_pie.jpg" alt="Lemon Custard Sponge Pie">
+                        <h3>🍋 Lemon Custard Sponge Pie</h3>
+                        <p>รสเปรี้ยวหวานลงตัว สูตรพิเศษจาก Pennsylvania เพียง 50 บาท/ชิ้น</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🥤 ตาราง Smoothie of the Day -->
+            <section class="smoothie-section text-center mt-8">
+                <h2 class="text-2xl font-bold text-pink-600">🥤 SMOOTHIE OF THE DAY</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p>📅 <strong>Mon Feb 17:</strong> Passion Fruity</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p>📅 <strong>Tue Feb 18:</strong> Straw & Raspberry</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p>📅 <strong>Wed Feb 19:</strong> Peach & Apricot</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p>📅 <strong>Thu Feb 20:</strong> Kale</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p>📅 <strong>Fri Feb 21:</strong> Passion Fruit</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p>📅 <strong>Sat Feb 22:</strong> Straw & Raspberry</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <p>📅 <strong>Sun Feb 23:</strong> Peach & Apricot</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script type="module" src="script.js"></script>
+    <!-- 🔐 Modal Login (ย้ายออกมานอก aside ให้แสดงกลางจอได้แน่นอน) -->
+    <div id="loginModal" class="modal hidden">
+    <div class="modal-content relative">
+        <span class="close-modal" id="closeModal">×</span>
+        <div id="loginContent">กำลังโหลด...</div>
+    </div>
+    </div>
+
+    <!-- 📝 Modal Register -->
+    <div id="registerModal" class="modal hidden">
+    <div class="modal-content relative">
+        <span class="close-modal" id="closeRegister">&times;</span>
+        <div id="registerContent">กำลังโหลด...</div>
+    </div>
+    </div>
+    </body>
+    </html>

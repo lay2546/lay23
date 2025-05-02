@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar with Dropdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="Product_cleaned.css">  
+</head>
+<body class="bg-gray-100">
+
+    <!-- 🌟 แถบด้านบน (Top Bar) -->
+    <header id="top-bar" class="top-bar">
+        <h1 class="top-bar-title logo-text">Le Poney</h1>
+        <div class="top-bar-buttons">
+            <button id="menu-btn" class="menu-button">☰</button>
+        </div>
+    </header>
+
+    <!-- 🌟 Overlay -->
+    <div id="overlay" class="overlay hidden"></div>
+
+    <!-- 🌟 Sidebar (Responsive) -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <button id="close-btn" class="close-button">&times;</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="Home.html" class="nav-link">🏡 Home</a>
+            <div class="dropdown">
+                <button class="dropdown-btn">
+                    🛍️ Product <span class="arrow">&#9662;</span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="Product.html" class="dropdown-link"> 🍰 Bakery & Dessert  </a>
+                    <a href="Product2.html" class="dropdown-link">🥤 SMOOTHIE & OTHERS</a>
+                </div>
+            </div>
+        
+            <!-- 🌟 เมนู Cart ใน Sidebar -->
+            <a href="Cart.html" id="cart-menu" class="nav-link">🛒 Cart <span id="cart-count">(0)</span></a>
+
+
+
+<!-- 🌟 ตะกร้าสินค้า -->
+
+            <a href="Delivery.html" class="nav-link">🚚 Delivery</a>
+            <a href="Event.html" class="nav-link">📅 Event</a>
+            <a href="#" class="nav-link" id="loginBtn">🔑Login</a>
+        </nav>
+    </aside>
+    </div>
+
+<!-- 🌟 กิจกรรมแนะนำ -->
+<main class="container">
+    <section class="activities">
+
+      <!-- 🌟 เมนูสินค้า -->
+<section class="product-section">
+    <h2 class="text-2xl font-bold mb-4 text-center">🥤 เมนูเครื่องดื่ม & อื่นๆ</h2>
+
+    <div class="product-grid">
+        <!-- SMOOTHIE & OTHERS -->
+        <div class="product-card">
+            <img src="รูป/kale_smoothie.jpg" class="product-img" alt="Kale Smoothie">
+            <div class="product-body">
+                <h5 class="product-title">Kale Smoothie</h5>
+                <p class="product-price">฿50 / ขวด</p>
+                <button class="add-to-cart" data-name="Kale Smoothie" data-price="50">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="รูป/strawberry_raspberry.jpg" class="product-img" alt="Strawberry & Raspberry Smoothie">
+            <div class="product-body">
+                <h5 class="product-title">Strawberry & Raspberry Smoothie</h5>
+                <p class="product-price">฿50 / ขวด</p>
+                <button class="add-to-cart" data-name="Strawberry & Raspberry Smoothie" data-price="50">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="รูป/passion_fruit.jpg" class="product-img" alt="Passion Fruit Smoothie">
+            <div class="product-body">
+                <h5 class="product-title">Passion Fruit Smoothie</h5>
+                <p class="product-price">฿50 / ขวด</p>
+                <button class="add-to-cart" data-name="Passion Fruit Smoothie" data-price="50">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="รูป/peach_apricot.jpg" class="product-img" alt="Peach & Apricot Smoothie">
+            <div class="product-body">
+                <h5 class="product-title">Peach & Apricot Smoothie</h5>
+                <p class="product-price">฿50 / ขวด</p>
+                <button class="add-to-cart" data-name="Peach & Apricot Smoothie" data-price="50">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="รูป/yogurt_bowl.jpg" class="product-img" alt="Yogurt Bowl Set">
+            <div class="product-body">
+                <h5 class="product-title">Yogurt Bowl Set</h5>
+                <p class="product-price">฿75 / เซ็ต</p>
+                <button class="add-to-cart" data-name="Yogurt Bowl Set" data-price="75">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="รูป/mini_yogurt.jpg" class="product-img" alt="Mini Yogurt Set">
+            <div class="product-body">
+                <h5 class="product-title">Mini Yogurt Set</h5>
+                <p class="product-price">฿45 / เซ็ต</p>
+                <button class="add-to-cart" data-name="Mini Yogurt Set" data-price="45">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="รูป/acai_avocado.jpg" class="product-img" alt="Acai หรือ Avocado Bowl Set">
+            <div class="product-body">
+                <h5 class="product-title">Acai หรือ Avocado Bowl Set</h5>
+                <p class="product-price">฿90 / เซ็ต</p>
+                <button class="add-to-cart" data-name="Acai หรือ Avocado Bowl Set" data-price="90">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="รูป/chia_seed.jpg" class="product-img" alt="Chia Seed Bowl Set">
+            <div class="product-body">
+                <h5 class="product-title">Chia Seed Bowl Set</h5>
+                <p class="product-price">฿95 / เซ็ต</p>
+                <button class="add-to-cart" data-name="Chia Seed Bowl Set" data-price="95">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="รูป/rambutan_jelly.jpg" class="product-img" alt="Rambutan Jelly">
+            <div class="product-body">
+                <h5 class="product-title">Rambutan Jelly</h5>
+                <p class="product-price">฿45 / ถ้วย</p>
+                <button class="add-to-cart" data-name="Rambutan Jelly" data-price="45">เพิ่มลงตะกร้า</button>
+            </div>
+        </div>
+    </div>
+    <div id="product-container" class="product-grid"></div>
+</section>
+    </section>
+</main>
+<!-- 🔐 Modal Login -->
+<div id="loginModal" class="modal hidden">
+    <div class="modal-content relative">
+      <span class="close-modal" id="closeModal">&times;</span>
+      <div id="loginContent">กำลังโหลด...</div>
+    </div>
+  </div>  
+  </div>
+  <script type="module">
+    import { loadProducts } from './product-loader.js';
+    loadProducts("smoothie", "product-container"); // หรือ "bakery" สำหรับ Product2.html
+  </script>
+  <script src="script.js"></script>
+  
+</body>
+</html>
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - จัดการสินค้าและออเดอร์</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-6">
+  <h1 class="text-2xl font-bold mb-6">🛠️ Admin - จัดการสินค้า</h1>
+
+  <form id="productForm" class="space-y-4 max-w-md">
+    <input id="name" type="text" placeholder="ชื่อสินค้า" class="w-full p-2 border rounded" required />
+    <input id="price" type="number" placeholder="ราคา (บาท)" class="w-full p-2 border rounded" required />
+    <input id="image" type="text" placeholder="ลิงก์ภาพ (Firebase Storage)" class="w-full p-2 border rounded" required />
+    <select id="category" class="w-full p-2 border rounded" required>
+      <option value="">-- เลือกหมวดหมู่ --</option>
+      <option value="bakery">🍰 Bakery</option>
+      <option value="smoothie">🥤 Smoothie</option>
+    </select>
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">➕ เพิ่มสินค้า</button>
+  </form>
+
+  <h2 class="text-xl font-semibold mt-10 mb-2">📦 รายการสินค้า</h2>
+  <ul id="productList" class="space-y-2 mb-10"></ul>
+
+  <h1 class="text-2xl font-bold mb-4">📋 รายการออเดอร์จากลูกค้า</h1>
+  <ul id="orderList" class="space-y-4"></ul>
+
+  <script type="module">
+    import { db } from './firebase.js';
+    import {
+      collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy
+    } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js';
+
+    const form = document.getElementById("productForm");
+    const list = document.getElementById("productList");
+    const orderList = document.getElementById("orderList");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = form.name.value.trim();
+      const price = parseFloat(form.price.value);
+      const image = form.image.value.trim();
+      const category = form.category.value;
+
+      try {
+        await addDoc(collection(db, "products"), {
+          name, price, image, category
+        });
+        form.reset();
+        alert("✅ เพิ่มสินค้าเรียบร้อยแล้ว");
+      } catch (err) {
+        alert("❌ เกิดข้อผิดพลาด: " + err.message);
+      }
+    });
+
+    onSnapshot(collection(db, "products"), (snapshot) => {
+      list.innerHTML = "";
+      snapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        const li = document.createElement("li");
+        li.className = "bg-white p-3 rounded shadow flex justify-between items-center";
+        li.innerHTML = `
+          <div>
+            <p><strong>${data.name}</strong> - ฿${data.price} (${data.category})</p>
+            <img src="${data.image}" alt="${data.name}" class="w-24 h-24 object-cover mt-2 rounded" />
+          </div>
+          <button class="text-red-500 delete-btn" data-id="${docSnap.id}">🗑️ ลบ</button>
+        `;
+        list.appendChild(li);
+      });
+
+      document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", async () => {
+          const id = btn.dataset.id;
+          if (confirm("คุณแน่ใจหรือไม่ว่าต้องการลบสินค้า?")) {
+            await deleteDoc(doc(db, "products", id));
+          }
+        });
+      });
+    });
+
+    const orderQuery = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+
+    onSnapshot(orderQuery, (snapshot) => {
+      orderList.innerHTML = "";
+      snapshot.forEach(doc => {
+        const order = doc.data();
+        const date = order.createdAt?.toDate().toLocaleString("th-TH") || "-";
+        const items = order.cart.map(item => `${item.name} x ${item.quantity || 1}`).join(", ");
+        const address = order.address || "-";
+        const name = order.name || "-";
+        const phone = order.phone || "-";
+
+        const li = document.createElement("li");
+        li.className = "bg-white shadow p-4 rounded";
+        li.innerHTML = `
+          <p><strong>🕒 วันที่:</strong> ${date}</p>
+          <p><strong>👤 ผู้ใช้:</strong> ${order.uid}</p>
+          <p><strong>📋 รายการ:</strong> ${items}</p>
+          <p><strong>📍 ชื่อผู้รับ:</strong> ${name}</p>
+          <p><strong>📱 เบอร์โทร:</strong> ${phone}</p>
+          <p><strong>🏠 ที่อยู่:</strong> ${address}</p>
+        `;
+        orderList.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
+</html>
